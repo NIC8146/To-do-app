@@ -1,0 +1,162 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+
+/* #header {
+    height:100px;
+    background-color: blue;
+} */
+
+body {
+    background-color: rgb(11, 11, 43);
+}
+
+#box {
+    height:150px;
+    width:450px;
+    border:2px solid rgb(127, 98, 207);
+    border-radius:20px;
+    display: flex;
+    margin:auto;
+    position: relative;
+    top:120px;
+}
+
+#text1 {
+    color:white;
+    position: relative;
+    top:35px;
+    left:20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+
+#text2 {
+    color: white;
+    position: relative;
+    top:45%;
+    right:22%
+}
+
+#circle {
+    height:75px;
+    width:75px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    top:30px;
+    left:110px;
+    background-color: rgb(135, 135, 245);
+}
+
+#text3 {
+    position:relative;
+    top:25px;
+    left:18px;
+    font-size: 25px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#line1 {
+    height:5px;
+    width:200px;
+    border:2px solid rgb(103, 103, 165);
+    position:absolute;
+    right:50%;
+    top:70%;
+    border-radius:30px;
+}
+
+input {
+    padding-left:20px;
+    position:relative;
+    top:170px;
+    left:730px;
+    height:35px;
+    width:385px;
+    border-radius: 10px;
+    background-color: rgb(45, 45, 107);
+    border:2px solid rgb(89, 89, 153);
+    outline:none;
+    color:white;
+}
+
+#button {
+    height:50px;
+    width:50px;
+    display:flex;
+    border-radius: 50%;
+    border:2px solid white;
+    position:relative;
+    top:120px;
+    margin:auto;
+    left:210px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.same-div {
+    padding-left:20px;
+    padding-top: 10px;
+    display:flex;
+    margin:auto;
+    position:relative;
+    top:150px;
+    height:35px;
+    width:450px;
+    background-color: rgb(45, 45, 107);
+    color:white;
+    border:2px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+    
+}
+
+#progress {
+    height:5px;
+    width:100px;
+    /* background-color: rgb(18, 233, 18); */
+    /* transition:all 0.3s ease; */
+}
+
+.task-comp {
+    height:40px;
+    width:40px;
+    position:relative;
+    right:15px;
+    bottom:8px;
+}
+
+.rewrite {
+    height:40px;
+    width:40px;
+    position:relative;
+    left:300px;
+    bottom:7px;
+}
+
+.delete {
+    height:40px;
+    width:40px;
+    position:relative;
+    left:320px;
+    bottom:7px;
+}
+
+.span {
+    position: relative;
+    right:80px;
+    top:3px;
+}
+
+.done {
+    height:40px;
+    width:40px;
+    position:relative;
+    right:15px;
+    bottom:8px;
+}
+
