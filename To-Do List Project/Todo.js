@@ -1,15 +1,15 @@
-let totalTasks = 0;
-let completetask = 0;
+let totalTasksCount = 0;
+let completeTaskCount = 0;
 function updateCounter() {
-    let taskCounter = document.getElementById("text3");  // "0/0" wale text ko select karo
+    let taskCounter = document.getElementById("counter");  // "0/0" wale text ko select karo
        if (taskCounter) {
-          taskCounter.innerText = `${completetask}/${totalTasks}`;
+          taskCounter.innerText = `${completeTaskCount}/${totalTasksCount}`;
         } else {
-             console.error("Error: 'text3' element not found!");
+             console.error("Error: 'counter' element not found!");
         }  
         updateProgress();   
         
-        if(totalTasks===completetask && totalTasks>0) {
+        if(totalTasksCount===completeTaskCount && totalTasksCount>0) {
             cherish();
         }
 }
@@ -18,79 +18,75 @@ function myfunction() {
     let list1 = document.getElementById("list1");
 
     if(input !== "") {
-        totalTasks++;
+        totalTasksCount++;
         updateCounter();
-        let newdiv = document.createElement("div");
-        newdiv.classList.add("same-div");
-        // newdiv.innerText = input;
+        let notediv = document.createElement("div");
+        notediv.classList.add("notediv");
 
         let span = document.createElement("span");
         span.classList.add("span");
         span.innerText = input;
 
-        let newimg = document.createElement("img");
-        newimg.classList.add("task-comp");
-        newimg.src = "TaskDone.png";
+        let incomplete_task_img = document.createElement("img");
+        incomplete_task_img.classList.add("task-comp");
+        incomplete_task_img.src = "TaskDone.png";
         
-        let newimg1 = document.createElement("img");
-        newimg1.classList.add("rewrite");
-        newimg1.src = "rewritepng.png";
+        let rewrite_img = document.createElement("img");
+        rewrite_img.classList.add("rewrite");
+        rewrite_img.src = "rewritepng.png";
 
-        let newimg2 = document.createElement("img");
-        newimg2.classList.add("delete");
-        newimg2.src = "trash.png";
+        let delete_img = document.createElement("img");
+        delete_img.classList.add("delete");
+        delete_img.src = "trash.png";
 
-        let newimg3 = document.createElement("img");
-        newimg3.classList.add("done");
-        newimg3.src = "checklist.png";
+        let task_comp_img = document.createElement("img");
+        task_comp_img.classList.add("done");
+        task_comp_img.src = "checklist.png";
 
-        newdiv.appendChild(newimg);
-        newdiv.appendChild(newimg1);
-        newdiv.appendChild(newimg2);
-        newdiv.appendChild(span);
+        notediv.appendChild(incomplete_task_img);
+        notediv.appendChild(rewrite_img);
+        notediv.appendChild(delete_img);
+        notediv.appendChild(span);
 
-        // newdiv.append(newimg, newimg1, newimg2, input);
-        list1.appendChild(newdiv);
-
-        console.log(newdiv);
+        list1.appendChild(notediv);
 
         document.getElementById("input").value = "";
 
-        newimg.addEventListener("click", function() {
-            if (newimg.src.includes("checklist.png")) {  
+        incomplete_task_img.addEventListener("click", function() {
+            if (incomplete_task_img.src.includes("checklist.png")) {  
                 // ✅ Task already completed
-                newimg.src = "TaskDone.png";  // ❌ Change image back to incomplete
+                incomplete_task_img.src = "TaskDone.png";  // ❌ Change image back to incomplete
                 span.style.color = "white";   // ❌ Text color wapas white
-                completetask--;               // ❌ Completed task count kam karo
+                completeTaskCount--;               // ❌ Completed task count kam karo
             } else {
                 // ✅ Task complete karo
-                newimg.src = "checklist.png"; // ✅ Change image to green tick
+                incomplete_task_img.src = "checklist.png"; // ✅ Change image to green tick
                 span.style.color = "green";   // ✅ Text color green
-                completetask++;               // ✅ Completed task count badhao
+                completeTaskCount++;               // ✅ Completed task count badhao
             }
             updateCounter();
          })
 
 
-        newimg1.addEventListener("click", function() {
-            let tasktext = newdiv.innerText;
+        rewrite_img.addEventListener("click", function() {
+            let tasktext = notediv.innerText;
             document.getElementById("input").value = tasktext;
             document.getElementById("input").focus();       // cursor input pe focous ho jata hai
-            newdiv.remove();      
-            totalTasks--;
-            
+            notediv.remove();      
+            totalTasksCount--;
+
             // if Task already completed  
-            if (newimg.src.includes("checklist.png")) {
-                completetask--;
+            if (incomplete_task_img.src.includes("checklist.png")) {
+                completeTaskCount--;
             }
             updateCounter();
         })
 
-        newimg2.addEventListener("click", function() {
-            newdiv.remove();
-            totalTasks--;
-            if (completetask > 0) {  
-                completetask--;               // ❌ Completed task count kam karo
+        delete_img.addEventListener("click", function() {
+            notediv.remove();
+            totalTasksCount--;
+            if (completeTaskCount > 0) {  
+                completeTaskCount--;               // ❌ Completed task count kam karo
             }
             updateCounter();
         })
@@ -103,7 +99,7 @@ function myfunction() {
 function updateProgress() {
     let progressbar = document.getElementById("progress");
 
-    let progpercentage = (completetask/totalTasks) * 100;
+    let progpercentage = (completeTaskCount/totalTasksCount) * 100;
     progressbar.style.width = progpercentage + "%";
     progressbar.style.backgroundColor = "green";
 }
