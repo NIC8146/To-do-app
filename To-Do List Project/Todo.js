@@ -9,7 +9,7 @@ function updateCounter() {
         }  
         updateProgress();   
         
-        if(totalTasks===completetask) {
+        if(totalTasks===completetask && totalTasks>0) {
             cherish();
         }
 }
@@ -58,7 +58,7 @@ function myfunction() {
 
         newimg.addEventListener("click", function() {
             if (newimg.src.includes("checklist.png")) {  
-                // ✅ Task already completed, ab wapas incomplete karo
+                // ✅ Task already completed
                 newimg.src = "TaskDone.png";  // ❌ Change image back to incomplete
                 span.style.color = "white";   // ❌ Text color wapas white
                 completetask--;               // ❌ Completed task count kam karo
@@ -76,14 +76,22 @@ function myfunction() {
             let tasktext = newdiv.innerText;
             document.getElementById("input").value = tasktext;
             document.getElementById("input").focus();       // cursor input pe focous ho jata hai
-            newdiv.remove();
+            newdiv.remove();      
+            totalTasks--;
+            
+            // if Task already completed  
+            if (newimg.src.includes("checklist.png")) {
+                completetask--;
+            }
             updateCounter();
         })
 
         newimg2.addEventListener("click", function() {
             newdiv.remove();
             totalTasks--;
-            completetask--;
+            if (completetask > 0) {  
+                completetask--;               // ❌ Completed task count kam karo
+            }
             updateCounter();
         })
     } else {
